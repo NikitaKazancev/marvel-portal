@@ -1,0 +1,32 @@
+@import '../../sass/vars.scss';
+
+.header {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+
+	font-weight: 700;
+
+	&__title {
+		font-size: 28px;
+
+		span {
+			color: $main-color;
+		}
+	}
+
+	nav > ul {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		font-size: 24px;
+		cursor: default;
+
+		li:hover {
+			cursor: pointer;
+			transition: 0.3s all;
+			color: $main-color;
+		}
+	}
+}

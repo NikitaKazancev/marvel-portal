@@ -1,0 +1,14 @@
+.characters {
+	display: inline-flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	gap: 25px;
+	grid-column: 1 / span 1;
+
+	&__more {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}

@@ -1,0 +1,50 @@
+@import './vars.scss';
+
+.block {
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.288);
+	border-radius: 5px;
+}
+
+.inline-flex {
+	display: inline-flex;
+	width: 100%;
+}
+
+.flex {
+	display: flex;
+}
+
+.btn {
+	text-align: center;
+	min-width: 101px;
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 14px;
+	transition: 0.3s transform;
+	border: none;
+	cursor: pointer;
+	padding: 10px 12px;
+	&:hover {
+		transform: translateY(-5px);
+	}
+
+	&_main {
+		background: linear-gradient(
+			-45deg,
+			transparent 8%,
+			$main-color 5%,
+			$main-color 92%,
+			transparent 1%
+		);
+	}
+
+	&_secondary {
+		background: linear-gradient(
+			-45deg,
+			transparent 8%,
+			$secondary-color 5%,
+			$secondary-color 92%,
+			transparent 1%
+		);
+	}
+}

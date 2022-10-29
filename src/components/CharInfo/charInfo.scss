@@ -1,0 +1,51 @@
+.char-info {
+	padding: 25px;
+	align-self: start;
+
+	&__thumbnail {
+		width: 150px;
+		height: 150px;
+		margin-right: 25px;
+
+		& + .flex {
+			flex-direction: column;
+			align-items: start;
+			justify-content: space-between;
+		}
+	}
+
+	&__title {
+		text-transform: uppercase;
+		font-size: 22px;
+		font-weight: bold;
+	}
+
+	&__src {
+		.btn {
+			display: block;
+		}
+		.btn_secondary {
+			margin-top: 10px;
+		}
+	}
+
+	&__descr {
+		margin-top: 15px;
+	}
+
+	&__comics {
+		&-title {
+			font-size: 18px;
+			font-weight: bold;
+			margin: 10px 0;
+		}
+	}
+
+	&-comic {
+		margin-top: 10px;
+		padding: 4px 10px;
+		font-size: 14px;
+		box-shadow: 0 2px 3px rgb(168, 168, 168);
+		border-radius: 5px 5px 0 0;
+	}
+}

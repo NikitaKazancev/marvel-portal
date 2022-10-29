@@ -1,0 +1,26 @@
+.char-search {
+	margin-top: 30px;
+	padding: 25px;
+
+	&__text {
+		font-size: 18px;
+		font-weight: bold;
+		display: block;
+	}
+
+	div {
+		display: grid;
+		grid-template-columns: 3fr 1fr;
+		gap: 25px;
+		margin-top: 15px;
+	}
+
+	input {
+		display: inline-block;
+		padding: 8px 0 4px 8px;
+		color: rgba(0, 0, 0, 0.5);
+		border: none;
+		font-size: 14px;
+		box-shadow: 0 2px 3px rgb(168, 168, 168);
+	}
+}
