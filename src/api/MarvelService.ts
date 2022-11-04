@@ -33,7 +33,7 @@ const MarvelService = () => {
 		return {
 			id,
 			name,
-			description: transformString(description),
+			description,
 			thumbnail: `${path}.${extension}`,
 			homepage: urls[0].url,
 			wiki: urls[1].url,

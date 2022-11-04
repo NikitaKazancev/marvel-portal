@@ -35,7 +35,7 @@ export const Characters: React.FC = () => {
 		itemsRefs[i].focus();
 	};
 
-	const onSelectedChar = (id: number): void => {
+	const onSelectedChar = (id: string): void => {
 		dispatch(changeSelectedChar(id));
 	};
 

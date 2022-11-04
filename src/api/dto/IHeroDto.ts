@@ -1,5 +1,5 @@
 export interface IHeroDto {
-	id: number;
+	id: string;
 	name: string;
 	description: string;
 	thumbnail: { path: string; extension: string };

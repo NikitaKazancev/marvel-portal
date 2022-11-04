@@ -1,3 +1,5 @@
+@import '../../sass/vars.scss';
+
 .char-search {
 	margin-top: 30px;
 	padding: 25px;
@@ -8,7 +10,7 @@
 		display: block;
 	}
 
-	div {
+	.char-search__wrapper {
 		display: grid;
 		grid-template-columns: 3fr 1fr;
 		gap: 25px;
@@ -18,9 +20,26 @@
 	input {
 		display: inline-block;
 		padding: 8px 0 4px 8px;
-		color: rgba(0, 0, 0, 0.5);
+		color: rgb(86, 86, 86);
 		border: none;
 		font-size: 14px;
 		box-shadow: 0 2px 3px rgb(168, 168, 168);
+
+		&::placeholder {
+			color: rgb(86, 86, 86);
+		}
+	}
+
+	&__form {
+		margin-top: 10px;
+		font-weight: bold;
+
+		&_error {
+			color: $main-color;
+		}
+
+		&_success {
+			color: rgba(9, 111, 9, 0.872);
+		}
 	}
 }

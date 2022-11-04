@@ -37,8 +37,19 @@ const heroesApi = createApi({
 			}),
 		}),
 		getById: builder.query({
-			query: (id: number) => ({
-				url: `characters/${id}?${params}`,
+			query: ({
+				type,
+				id,
+			}: {
+				type: 'comic' | 'character';
+				id: string;
+			}) => ({
+				url: `${type}s/${id}?${params}`,
+			}),
+		}),
+		getByName: builder.query({
+			query: (name: string) => ({
+				url: `characters?name=${name}${params}`,
 			}),
 		}),
 	}),
@@ -47,8 +58,9 @@ const heroesApi = createApi({
 export const {
 	useGetRandomCharQuery,
 	useGetCharsQuery,
-	reducerPath,
 	useGetByIdQuery,
+	useGetByNameQuery,
+	reducerPath,
 	reducer,
 	middleware,
 } = heroesApi;

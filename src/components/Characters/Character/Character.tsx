@@ -3,7 +3,7 @@ import type { ICharacter } from '../../../state/heroesSlice';
 import { LegacyRef } from 'react';
 
 interface ICharFunctions {
-	onSelectedChar: (id: number) => void;
+	onSelectedChar: (id: string) => void;
 	setRef: (elem: HTMLLIElement) => void;
 }
 

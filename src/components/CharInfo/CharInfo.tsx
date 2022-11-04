@@ -1,19 +1,21 @@
 import './charInfo.scss';
-import { useEffect } from 'react';
-import thumbnail from '../../img/thumbnail.png';
+import { useEffect, useMemo } from 'react';
 import { CharInfoComic } from './CharInfoComic/CharInfoComic';
 import { useGetByIdQuery } from '../../api/heroesApi';
 import Spinner from '../Spinner/Spinner';
 import { getCharacter } from '../../api/MarvelService';
 import { useSelector } from 'react-redux';
 import { IState } from '../../state/store';
+import { transformString } from '../../general/functions';
 
 export const CharInfo: React.FC = () => {
 	const selectedChar = useSelector(
 		(state: IState) => state.heroesState.selectedChar
 	);
-	const { isFetching, isLoading, data, refetch } =
-		useGetByIdQuery(selectedChar);
+	const { isFetching, isLoading, data, refetch } = useGetByIdQuery({
+		id: selectedChar,
+		type: 'character',
+	});
 
 	useEffect(() => {
 		refetch();
@@ -24,6 +26,7 @@ export const CharInfo: React.FC = () => {
 	else {
 		const { comics, description, homepage, id, name, thumbnail, wiki } =
 			getCharacter(data);
+		const descr = transformString(description);
 
 		content = (
 			<>
@@ -45,7 +48,7 @@ export const CharInfo: React.FC = () => {
 						</div>
 					</div>
 				</div>
-				<div className='char-info__descr'>{description}</div>
+				<div className='char-info__descr'>{descr}</div>
 				<div className='char-info__comics'>
 					<h4 className='char-info__comics-title'>
 						{comics.length ? 'Comics:' : 'No info about comics'}

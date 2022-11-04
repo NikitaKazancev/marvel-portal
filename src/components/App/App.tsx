@@ -2,7 +2,7 @@ import { Header } from '../Header/Header';
 import { useLocation, useOutlet } from 'react-router-dom';
 import './app.scss';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
-import { routes } from '../../pages/router';
+import { routes } from '../../routes/routes';
 
 export function App(): JSX.Element {
 	const location = useLocation();

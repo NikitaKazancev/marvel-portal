@@ -7,7 +7,7 @@ export const Header: React.FC = () => {
 		return [
 			{
 				name: 'Characters',
-				to: '/characters',
+				to: '/',
 			},
 			{
 				name: 'Comics',
