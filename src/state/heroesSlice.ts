@@ -11,12 +11,14 @@ export interface IHeroesState {
 	list: ICharacter[];
 	selectedChar: string;
 	searchName: string;
+	loadByClick: boolean;
 }
 
 const initialState: IHeroesState = {
 	list: [],
 	selectedChar: '1011095',
 	searchName: '',
+	loadByClick: false,
 };
 
 const heroesSlice = createSlice({
@@ -32,11 +34,15 @@ const heroesSlice = createSlice({
 		},
 
 		setSearchName: (state, action: PayloadAction<string>) => {
-			console.log(2);
 			state.searchName = action.payload;
+		},
+
+		setLoadByClick: (state, action: PayloadAction<boolean>) => {
+			state.loadByClick = action.payload;
 		},
 	},
 });
 
-export const { add, changeSelectedChar, setSearchName } = heroesSlice.actions;
+export const { add, changeSelectedChar, setSearchName, setLoadByClick } =
+	heroesSlice.actions;
 export default heroesSlice.reducer;

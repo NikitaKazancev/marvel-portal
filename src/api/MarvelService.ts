@@ -1,16 +1,26 @@
-import { transformString } from '../general/functions';
-import { IHeroDto } from './dto/IHeroDto';
-import { IHeroResDto } from './dto/IHeroResDto';
-import { IResDto } from './dto/IResDto';
+import { IHeroDto } from './dto/hero/IHeroDto';
+import { IHeroResDto } from './dto/hero/IHeroResDto';
+import { IHeroQueryDto } from './dto/hero/IHeroQueryDto';
+import type { IComicDto } from './dto/comic/IComicDto';
+import type { IComicResDto } from './dto/comic/IComicResDto';
+import { IComicQueryDto } from './dto/comic/IComicQueryDto';
 
 //eslint-disable-next-line
 const MarvelService = () => {
-	const getCharacter = (data: IResDto): IHeroResDto =>
+	const getCharacter = (data: IHeroQueryDto): IHeroResDto =>
 		_transformCharacterData(data.data.results[0]);
 
-	const getCharacters = (data: IResDto): IHeroResDto[] => {
+	const getCharacters = (data: IHeroQueryDto): IHeroResDto[] => {
 		const chars = data.data.results;
 		return chars.map(_transformCharacterData);
+	};
+
+	const getComic = (data: IComicQueryDto): IComicResDto =>
+		_transformComicData(data.data.results[0]);
+
+	const getComics = (data: IComicQueryDto): IComicResDto[] => {
+		const comics = data.data.results;
+		return comics.map(_transformComicData);
 	};
 
 	const _transformCharacterData = ({
@@ -41,7 +51,52 @@ const MarvelService = () => {
 		};
 	};
 
-	return { getCharacter, getCharacters };
+	const _transformComicData = ({
+		description,
+		id,
+		pageCount,
+		prices: [{ price }],
+		textObjects,
+		thumbnail: { path, extension },
+		title,
+	}: IComicDto): IComicResDto => {
+		if (!description) {
+			description = '';
+		}
+		description = description.includes('</p>')
+			? description.slice(16, -4)
+			: description || `At the moment there's no description about ${title}`;
+
+		let language: string;
+		if (!textObjects.length || !textObjects[0].language) {
+			language = 'en';
+		} else {
+			language = textObjects[0].language;
+		}
+
+		if (price == '0') {
+			price = 'Price is not available';
+		} else {
+			price = `$ ${price}`;
+		}
+
+		if (pageCount == '0') {
+			pageCount = 'Pages are not available';
+		}
+
+		return {
+			id,
+			name: title,
+			description,
+			thumbnail: `${path}.${extension}`,
+			pageCount,
+			price,
+			language,
+		};
+	};
+
+	return { getCharacter, getCharacters, getComic, getComics };
 };
 
-export const { getCharacter, getCharacters } = MarvelService();
+export const { getCharacter, getCharacters, getComic, getComics } =
+	MarvelService();

@@ -1,0 +1,41 @@
+@import '../../sass/vars.scss';
+
+.page404 {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	&__number {
+		display: inline-flex;
+		gap: 15px;
+		align-items: center;
+	}
+
+	&__err {
+		color: $main-color;
+		font-size: 11rem;
+	}
+
+	&__icon {
+		height: 137px;
+		font-size: 8.5rem;
+		color: $main-color;
+	}
+
+	&__msg {
+		text-align: center;
+		font-size: 1.6rem;
+		width: 75%;
+	}
+
+	&__link {
+		text-decoration: none;
+		color: $main-color;
+		transition: all 0.15s;
+
+		&:hover {
+			color: rgba($main-color, 0.6);
+		}
+	}
+}

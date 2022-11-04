@@ -1,35 +1,53 @@
 import './characters.scss';
 import { useEffect } from 'react';
 import { Character } from './Character/Character';
-import { useGetCharsQuery } from '../../api/heroesApi';
+import { useGetRandomsQuery } from '../../api/heroesApi';
 import { getCharacters } from '../../api/MarvelService';
 import Spinner from '../Spinner/Spinner';
 import { useDispatch, useSelector } from 'react-redux';
-import { add, changeSelectedChar } from '../../state/heroesSlice';
+import {
+	add,
+	changeSelectedChar,
+	setLoadByClick,
+} from '../../state/heroesSlice';
 import { IState } from '../../state/store';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 export const Characters: React.FC = () => {
-	const { data, isFetching, isLoading, refetch } = useGetCharsQuery(null);
+	const { data, isFetching, isLoading, refetch } = useGetRandomsQuery({
+		amount: 9,
+		type: 'character',
+	});
+
 	const charsList = useSelector((state: IState) => state.heroesState.list);
+	const loadByClick = useSelector(
+		(state: IState) => state.heroesState.loadByClick
+	);
 	const dispatch = useDispatch();
-
-	useEffect(() => {
-		if (data != undefined) {
-			dispatch(add(getCharacters(data)));
-		}
-	}, [data]);
-
-	const loadMore = (): void => {
-		refetch();
-	};
 
 	const itemsRefs: HTMLLIElement[] = [];
 	const setRef = (elem: HTMLLIElement): void => {
 		itemsRefs.push(elem);
 	};
 
+	useEffect(() => {
+		if (data && (!charsList.length || loadByClick)) {
+			dispatch(add(getCharacters(data)));
+		}
+
+		return () => {
+			dispatch(setLoadByClick(false));
+		};
+	}, [data]);
+
+	const loadMore = (): void => {
+		dispatch(setLoadByClick(true));
+		refetch();
+	};
+
 	const onSelectedRef = (i: number): void => {
+		console.log(i);
+
 		itemsRefs.forEach(elem => elem.classList.remove('character_selected'));
 		itemsRefs[i].classList.add('character_selected');
 		itemsRefs[i].focus();

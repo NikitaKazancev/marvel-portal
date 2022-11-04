@@ -1,5 +1,6 @@
 import './banner.scss';
+import banner from '../../img/banner.png';
 
 export const Banner: React.FC = () => {
-	return <img src='../../img/banner.png' className='banner' />;
+	return <img src={banner} className='banner' alt='banner' />;
 };

@@ -1,6 +1,6 @@
 import { IHeroDto } from './IHeroDto';
 
-export interface IResDto {
+export interface IHeroQueryDto {
 	data: {
 		results: IHeroDto[];
 	};

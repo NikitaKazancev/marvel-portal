@@ -3,8 +3,10 @@
 	margin: 50px auto;
 
 	.page {
-		display: grid;
-		grid-template-columns: 5fr 3fr;
-		gap: 25px;
+		&_main {
+			display: grid;
+			grid-template-columns: 5fr 3fr;
+			gap: 25px;
+		}
 	}
 }

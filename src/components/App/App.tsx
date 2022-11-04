@@ -19,27 +19,26 @@ export function App(): JSX.Element {
 	return (
 		<div className='app'>
 			<Header></Header>
-			<main>
-				<SwitchTransition>
-					<CSSTransition
-						key={location.pathname}
+
+			<SwitchTransition>
+				<CSSTransition
+					key={location.pathname}
+					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+					//@ts-ignore
+					nodeRef={nodeRef}
+					timeout={300}
+					classNames='page'
+					unmountOnExit
+				>
+					{(): JSX.Element => (
 						// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 						//@ts-ignore
-						nodeRef={nodeRef}
-						timeout={300}
-						classNames='page'
-						unmountOnExit
-					>
-						{(): JSX.Element => (
-							// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-							//@ts-ignore
-							<div ref={nodeRef} className='page'>
-								{currentOutlet}
-							</div>
-						)}
-					</CSSTransition>
-				</SwitchTransition>
-			</main>
+						<main ref={nodeRef} className='page'>
+							{currentOutlet}
+						</main>
+					)}
+				</CSSTransition>
+			</SwitchTransition>
 		</div>
 	);
 }

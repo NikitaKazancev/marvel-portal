@@ -1,7 +1,8 @@
 import { createRef } from 'react';
-import { Page404 } from '../pages/404';
-import { CharPage } from '../pages/CharPage';
-import { ComicPage } from '../pages/ComicPage';
+import { Page404 } from '../pages/404/Page404';
+import { CharPage } from '../pages/CharPage/CharPage';
+import { ComicPage } from '../pages/ComicPage/ComicPage';
+import { ComicsPage } from '../pages/comicsPage/ComicsPage';
 import { MainPage } from '../pages/MainPage';
 
 export const routes = [
@@ -9,11 +10,17 @@ export const routes = [
 	{
 		path: '/comics',
 		name: 'Comic',
+		element: <ComicsPage />,
+		nodeRef: createRef(),
+	},
+	{
+		path: '/comics/:id',
+		name: 'Char',
 		element: <ComicPage />,
 		nodeRef: createRef(),
 	},
 	{
-		path: '/characters',
+		path: '/characters/:id',
 		name: 'Char',
 		element: <CharPage />,
 		nodeRef: createRef(),
