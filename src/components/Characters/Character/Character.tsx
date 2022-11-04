@@ -1,6 +1,6 @@
 import './character.scss';
+
 import type { ICharacter } from '../../../state/heroesSlice';
-import { LegacyRef } from 'react';
 
 interface ICharFunctions {
 	onSelectedChar: (id: string) => void;

@@ -1,5 +1,6 @@
 import './charInfo.scss';
-import { useEffect, useMemo } from 'react';
+
+import { useEffect } from 'react';
 import { CharInfoComic } from './CharInfoComic/CharInfoComic';
 import { useGetByIdQuery } from '../../api/heroesApi';
 import Spinner from '../Spinner/Spinner';
@@ -24,7 +25,7 @@ export const CharInfo: React.FC = () => {
 	let content;
 	if (isFetching || isLoading) content = <Spinner></Spinner>;
 	else {
-		const { comics, description, homepage, id, name, thumbnail, wiki } =
+		const { comics, description, homepage, name, thumbnail, wiki } =
 			getCharacter(data);
 		const descr = transformString(description);
 

@@ -1,9 +1,9 @@
 import './randomChar.scss';
+
 import { useGetRandomCharQuery } from '../../../api/heroesApi';
 import { getCharacter } from '../../../api/MarvelService';
 import Spinner from '../../Spinner/Spinner';
 import { transformString } from '../../../general/functions';
-import { useMemo } from 'react';
 
 export const RandomChar: React.FC = () => {
 	const { data, isFetching, isLoading } = useGetRandomCharQuery(null);

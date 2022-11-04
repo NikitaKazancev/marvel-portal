@@ -1,4 +1,5 @@
 import './charPage.scss';
+
 import { useParams } from 'react-router-dom';
 import { useGetByIdQuery } from '../../api/heroesApi';
 import { getCharacter } from '../../api/MarvelService';

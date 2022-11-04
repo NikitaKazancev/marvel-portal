@@ -1,17 +1,16 @@
+import './comicsPage.scss';
+
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { TransitionGroup } from 'react-transition-group';
 import { useGetRandomsQuery } from '../../api/heroesApi';
-import { getCharacters, getComics } from '../../api/MarvelService';
-import { Character } from '../../components/Characters/Character/Character';
+import { getComics } from '../../api/MarvelService';
 import Spinner from '../../components/Spinner/Spinner';
 import { add, setLoadByClick } from '../../state/comicsSlice';
 import { IState } from '../../state/store';
 import { CSSTransition } from 'react-transition-group';
-import './comicsPage.scss';
 import { Comic } from '../../components/Comic/Comic';
 import { Banner } from '../../components/Banner/Banner';
-import './comicsPage.scss';
 import { Helmet } from 'react-helmet';
 
 export const ComicsPage: React.FC = () => {

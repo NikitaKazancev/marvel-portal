@@ -1,6 +1,7 @@
+import './app.scss';
+
 import { Header } from '../Header/Header';
 import { useLocation, useOutlet } from 'react-router-dom';
-import './app.scss';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
 import { routes } from '../../routes/routes';
 

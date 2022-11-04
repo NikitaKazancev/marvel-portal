@@ -1,4 +1,5 @@
 import './characters.scss';
+
 import { useEffect } from 'react';
 import { Character } from './Character/Character';
 import { useGetRandomsQuery } from '../../api/heroesApi';

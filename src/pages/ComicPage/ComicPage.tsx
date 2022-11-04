@@ -1,4 +1,5 @@
 import './comicPage.scss';
+
 import { useParams } from 'react-router-dom';
 import { Banner } from '../../components/Banner/Banner';
 import Spinner from '../../components/Spinner/Spinner';
@@ -12,7 +13,7 @@ export const ComicPage: React.FC = () => {
 
 	if (!id) return <Page404 />;
 
-	const { isFetching, isLoading, data, isError } = useGetByIdQuery({
+	const { isFetching, isLoading, data } = useGetByIdQuery({
 		type: 'comic',
 		id,
 	});

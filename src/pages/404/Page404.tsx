@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
-// import 'https://kit.fontawesome.com/4b9ba14b0f.js';
 import './page404.scss';
+
+import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
 export const Page404: React.FC = () => {

@@ -1,4 +1,5 @@
 import './randomTry.scss';
+
 import imgDecoration from '../../../img/random-decoration.png';
 import { useGetRandomCharQuery } from '../../../api/heroesApi';
 

@@ -1,12 +1,12 @@
+import './charSearch.scss';
+
 import { Formik, Field, ErrorMessage } from 'formik';
-import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Form, Link } from 'react-router-dom';
 import { useGetByNameQuery } from '../../api/heroesApi';
 import { getCharacter } from '../../api/MarvelService';
 import { setSearchName } from '../../state/heroesSlice';
 import { IState } from '../../state/store';
-import './charSearch.scss';
 
 export const CharSearch: React.FC = () => {
 	const dispatch = useDispatch();

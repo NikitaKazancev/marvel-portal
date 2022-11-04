@@ -1,4 +1,5 @@
 import './random.scss';
+
 import { RandomChar } from './RandomChar/RandomChar';
 import { RandomTry } from './RandomTry/RandomTry';
 

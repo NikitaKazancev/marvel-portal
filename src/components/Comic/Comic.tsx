@@ -1,5 +1,6 @@
-import { IComic } from '../../state/comicsSlice';
 import './comic.scss';
+
+import { IComic } from '../../state/comicsSlice';
 import { Link } from 'react-router-dom';
 
 export const Comic: React.FC<IComic> = ({ thumbnail, id, name, price }) => {
