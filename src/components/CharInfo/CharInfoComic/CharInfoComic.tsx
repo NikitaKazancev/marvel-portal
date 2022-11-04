@@ -1,7 +1,7 @@
 export interface ICharInfoComic {
-	children: string;
+	name: string;
 }
 
-export const CharInfoComic: React.FC<ICharInfoComic> = ({ children }) => {
-	return <div className='char-info-comic'>{children}</div>;
+export const CharInfoComic: React.FC<ICharInfoComic> = ({ name }) => {
+	return <div className='char-info-comic'>{name}</div>;
 };

@@ -1,23 +1,39 @@
 import './randomChar.scss';
-import thumbnail from '../../../img/thumbnail.png';
+import { useGetRandomCharQuery } from '../../../api/heroesApi';
+import { getCharacter } from '../../../api/MarvelService';
+import Spinner from '../../Spinner/Spinner';
 
 export const RandomChar: React.FC = () => {
-	return (
-		<div className='random__char'>
-			<img src={thumbnail} alt='thumbnail' />
-			<div className='random__char-info'>
-				<h3 className='random__char-title'>THOR</h3>
-				<div className='random__char-descr'>
-					As the Norse God of thunder and lightning, Thor wields one of the
-					greatest weapons ever made, the enchanted hammer Mjolnir. While
-					others have described Thor as an over-muscled, oafish imbecile,
-					he's quite smart and compassionate...
+	const { data, isFetching, isLoading } = useGetRandomCharQuery(null);
+
+	let content: JSX.Element;
+	if (isFetching || isLoading) {
+		content = <Spinner absolute={true}></Spinner>;
+	} else {
+		const { description, homepage, name, thumbnail, wiki } =
+			getCharacter(data);
+		content = (
+			<>
+				<img
+					src={thumbnail}
+					alt={name}
+					className='random__char-thumbnail'
+				/>
+				<div className='random__char-info'>
+					<h3 className='random__char-title'>{name}</h3>
+					<div className='random__char-descr'>{description}</div>
+					<div className='random__char-src'>
+						<a className='btn btn_main' href={homepage}>
+							homepage
+						</a>
+						<a className='btn btn_secondary' href={wiki}>
+							WIKI
+						</a>
+					</div>
 				</div>
-				<div className='random__char-src'>
-					<button className='btn btn_main'>homepage</button>
-					<button className='btn btn_secondary'>WIKI</button>
-				</div>
-			</div>
-		</div>
-	);
+			</>
+		);
+	}
+
+	return <div className='random__char'>{content}</div>;
 };

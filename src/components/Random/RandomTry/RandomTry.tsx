@@ -1,7 +1,14 @@
 import './randomTry.scss';
 import imgDecoration from '../../../img/random-decoration.png';
+import { useGetRandomCharQuery } from '../../../api/heroesApi';
 
 export const RandomTry: React.FC = () => {
+	const { refetch } = useGetRandomCharQuery(null);
+
+	const handleClick = (): void => {
+		refetch();
+	};
+
 	return (
 		<div className='random__try'>
 			<h2 className='random__try-title'>
@@ -10,7 +17,9 @@ export const RandomTry: React.FC = () => {
 			</h2>
 			<div className='random__try-search'>
 				<h3>Or choose another one</h3>
-				<div className='btn btn_main'>try it</div>
+				<div className='btn btn_main' onClick={handleClick}>
+					try it
+				</div>
 			</div>
 			<img
 				className='random__try-decoration'

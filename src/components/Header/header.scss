@@ -9,6 +9,8 @@
 
 	&__title {
 		font-size: 28px;
+		text-decoration: none;
+		color: #000;
 
 		span {
 			color: $main-color;
@@ -23,10 +25,21 @@
 		font-size: 24px;
 		cursor: default;
 
-		li:hover {
-			cursor: pointer;
-			transition: 0.3s all;
-			color: $main-color;
+		a {
+			color: #000;
+			text-decoration: none;
+
+			&:hover {
+				cursor: pointer;
+				transition: 0.3s all;
+				color: $main-color;
+			}
+
+			&.with-slash:after {
+				content: '/';
+				color: #000;
+				margin: 0 5px;
+			}
 		}
 	}
 }
