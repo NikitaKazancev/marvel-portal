@@ -12,12 +12,12 @@ export const RandomTry: React.FC = () => {
 
 	return (
 		<div className='random__try'>
-			<h2 className='random__try-title'>
+			<h2 className='random__try-title small-title'>
 				Random character for today! <br />
 				Do you want to get to know him better?
 			</h2>
 			<div className='random__try-search'>
-				<h3>Or choose another one</h3>
+				<h3 className='small-title'>Or choose another one</h3>
 				<div className='btn btn_main' onClick={handleClick}>
 					try it
 				</div>

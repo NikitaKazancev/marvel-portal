@@ -5,7 +5,6 @@
 	padding: 25px;
 
 	&__text {
-		font-size: 18px;
 		font-weight: bold;
 		display: block;
 	}
@@ -15,6 +14,11 @@
 		grid-template-columns: 3fr 1fr;
 		gap: 25px;
 		margin-top: 15px;
+
+		.btn {
+			align-self: center;
+			justify-self: center;
+		}
 	}
 
 	input {
@@ -22,7 +26,6 @@
 		padding: 8px 0 4px 8px;
 		color: rgb(86, 86, 86);
 		border: none;
-		font-size: 14px;
 		box-shadow: 0 2px 3px rgb(168, 168, 168);
 
 		&::placeholder {
@@ -41,5 +44,18 @@
 		&_success {
 			color: rgba(9, 111, 9, 0.872);
 		}
+	}
+}
+
+@media screen and (max-width: 750px) {
+	.char-search {
+		padding: 15px;
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.char-search {
+		margin-top: 20px;
+		padding: 10px;
 	}
 }

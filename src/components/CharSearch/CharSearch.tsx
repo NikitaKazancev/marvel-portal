@@ -48,7 +48,7 @@ export const CharSearch: React.FC = () => {
 					return (
 						<Form className='char-search__form' onSubmit={handleSubmit}>
 							<label
-								className='char-search__text'
+								className='char-search__text small-title'
 								htmlFor='char-search__name-id'
 							>
 								Or find a character by name:
@@ -59,6 +59,7 @@ export const CharSearch: React.FC = () => {
 									type='text'
 									id='char-search__name-id'
 									placeholder='Enter name'
+									className='descr'
 								/>
 								<button className='btn btn_main' type='submit'>
 									find
@@ -67,7 +68,7 @@ export const CharSearch: React.FC = () => {
 							<ErrorMessage
 								name='name'
 								component='div'
-								className='char-search__form char-search__form_error'
+								className='char-search__form char-search__form_error descr'
 							/>
 						</Form>
 					);
@@ -93,7 +94,7 @@ const CharSearchRes: React.FC<{
 
 			content = (
 				<div className='char-search__wrapper'>
-					<div className='char-search__form char-search__form_success'>
+					<div className='char-search__form char-search__form_success descr'>
 						There it is! Wanna visit {name}'s page?
 					</div>
 					<Link to={`/characters/${id}`} className='btn btn_secondary'>
@@ -103,7 +104,7 @@ const CharSearchRes: React.FC<{
 			);
 		} else {
 			return (
-				<div className='char-search__form char-search__form_error'>
+				<div className='char-search__form char-search__form_error descr'>
 					The character was not found. Check the name and try again
 				</div>
 			);

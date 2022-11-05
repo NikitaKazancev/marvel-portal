@@ -3,7 +3,7 @@ import { Page404 } from '../pages/404/Page404';
 import { CharPage } from '../pages/CharPage/CharPage';
 import { ComicPage } from '../pages/ComicPage/ComicPage';
 import { ComicsPage } from '../pages/comicsPage/ComicsPage';
-import { MainPage } from '../pages/MainPage';
+import { MainPage } from '../pages/Main/MainPage';
 
 export const routes = [
 	{ path: '/', name: 'Main', element: <MainPage />, nodeRef: createRef() },

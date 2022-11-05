@@ -15,17 +15,18 @@
 }
 
 .btn {
+	letter-spacing: 1px;
 	display: inline-block;
 	text-decoration: none;
 	text-align: center;
-	min-width: 101px;
+	min-width: calc($index * 4);
 	color: #fff;
 	text-transform: uppercase;
-	font-size: 14px;
+	font-size: calc($index * 0.75);
 	transition: 0.3s transform;
 	border: none;
 	cursor: pointer;
-	padding: 10px 12px;
+	padding: 0.45em 0.6em;
 	&:hover {
 		transform: translateY(-5px);
 	}
@@ -85,5 +86,45 @@
 			transform: scale(0.95);
 			transition: opacity 300ms, transform 300ms;
 		}
+	}
+}
+
+.small-title {
+	font-size: $index;
+}
+
+.descr {
+	font-size: calc($index * 0.65);
+}
+
+@media screen and (max-width: 1350px) {
+	.small-title {
+		font-size: calc($index * 1.15);
+	}
+
+	.descr {
+		font-size: calc($index * 0.85);
+	}
+
+	.btn {
+		font-size: 16px;
+		min-width: 90px;
+		padding: 8px 10px;
+	}
+}
+
+@media screen and (max-width: 1000px) {
+	.small-title {
+		font-size: 18px;
+	}
+
+	.descr {
+		font-size: 14px;
+	}
+}
+
+@media screen and (max-width: 750px) {
+	.btn {
+		font-size: 14px;
 	}
 }

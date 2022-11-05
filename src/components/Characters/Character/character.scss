@@ -1,15 +1,12 @@
 @import '../../../sass/vars.scss';
 
 .character {
-	padding: 15px;
 	cursor: pointer;
-	min-height: 320px;
-	width: 200px;
+	width: 100%;
 	background-color: $bg-color;
 
 	&__thumbnail {
-		width: 199px;
-		transform: translate(-14px, -15px);
+		width: 100%;
 		border-radius: 5px 5px 0 0;
 		aspect-ratio: 1/1;
 	}
@@ -17,8 +14,8 @@
 	&__title {
 		text-transform: uppercase;
 		color: #fff;
-		font-size: 22px;
-		margin-top: 15px;
+		font-size: $index;
+		margin: 15px;
 	}
 
 	&_selected {

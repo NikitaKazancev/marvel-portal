@@ -1,12 +1,14 @@
+@import '../../sass/vars.scss';
+
 .characters {
 	position: relative;
 	grid-column: 1 / span 1;
 
 	&__list {
 		width: 100%;
-		display: inline-flex;
-		flex-wrap: wrap;
-		justify-content: space-around;
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		justify-items: center;
 		gap: 25px;
 	}
 
@@ -18,5 +20,38 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
+	}
+}
+
+@media screen and (max-width: 1500px) {
+	.characters {
+		&__list {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+}
+
+@media screen and (max-width: 1000px) {
+	.characters {
+		&__list {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+}
+
+@media screen and (max-width: 750px) {
+	.characters {
+		&__list {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.characters {
+		&__list {
+			gap: 15px;
+			grid-template-columns: repeat(2, 1fr);
+		}
 	}
 }

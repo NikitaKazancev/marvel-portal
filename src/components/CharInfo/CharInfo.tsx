@@ -38,7 +38,7 @@ export const CharInfo: React.FC = () => {
 						alt={name}
 					/>
 					<div className='flex'>
-						<h3 className='char-info__title'>{name}</h3>
+						<h3 className='char-info__title small-title'>{name}</h3>
 						<div className='char-info__src'>
 							<a className='btn btn_main' href={homepage}>
 								homepage
@@ -49,9 +49,9 @@ export const CharInfo: React.FC = () => {
 						</div>
 					</div>
 				</div>
-				<div className='char-info__descr'>{descr}</div>
+				<div className='char-info__descr descr'>{descr}</div>
 				<div className='char-info__comics'>
-					<h4 className='char-info__comics-title'>
+					<h4 className='char-info__comics-title small-title'>
 						{comics.length ? 'Comics:' : 'No info about comics'}
 					</h4>
 					{comics.map(({ name }, i) => (

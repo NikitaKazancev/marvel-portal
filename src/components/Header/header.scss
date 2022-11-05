@@ -8,7 +8,7 @@
 	font-weight: 700;
 
 	&__title {
-		font-size: 28px;
+		font-size: calc($index * 1.25);
 		text-decoration: none;
 		color: #000;
 
@@ -26,6 +26,7 @@
 		cursor: default;
 
 		a {
+			font-size: $index;
 			color: #000;
 			text-decoration: none;
 
@@ -39,6 +40,41 @@
 				content: '/';
 				color: #000;
 				margin: 0 5px;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 1500px) {
+	.header {
+		padding: 0 20px;
+		justify-content: space-between;
+		&__title {
+			font-size: calc($index * 1.5);
+		}
+		nav > ul {
+			a {
+				font-size: calc($index * 1.25);
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.header {
+		flex-direction: column;
+
+		&__title {
+			font-size: calc($index * 2.25);
+		}
+
+		nav {
+			margin-top: 20px;
+
+			& > ul {
+				a {
+					font-size: calc($index * 1.75);
+				}
 			}
 		}
 	}

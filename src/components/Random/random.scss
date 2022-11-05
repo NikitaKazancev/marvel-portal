@@ -2,5 +2,29 @@
 	margin: 50px 0 25px 0;
 	display: flex;
 	grid-column: 1 / -1;
-	height: 250px;
+	height: 40vh;
+	z-index: 0;
+}
+
+@media screen and (max-width: 1000px) {
+	.random {
+		margin-bottom: 0;
+		margin-top: 25px;
+		flex-direction: column;
+		height: 475px;
+	}
+}
+
+@media screen and (max-width: 750px) {
+	.random {
+		height: 430px;
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.random {
+		margin-top: 15px;
+		height: auto;
+		min-height: 600px;
+	}
 }
