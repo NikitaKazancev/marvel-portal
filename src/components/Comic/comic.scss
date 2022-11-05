@@ -1,5 +1,4 @@
 .comic {
-	width: 225px;
 	text-decoration: none;
 	color: #000;
 
@@ -16,5 +15,13 @@
 	&__price {
 		font-weight: bold;
 		color: rgba(#000, 0.6);
+	}
+}
+
+@media screen and (max-width: 520px) {
+	.comic {
+		&__title {
+			margin: 0 0 3px 0;
+		}
 	}
 }

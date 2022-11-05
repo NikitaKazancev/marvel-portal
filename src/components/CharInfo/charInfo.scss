@@ -73,8 +73,8 @@
 		}
 
 		&__src {
-			.btn:nth-child(2) {
-				display: none;
+			.btn_secondary {
+				margin-top: 5px;
 			}
 		}
 
@@ -87,6 +87,14 @@
 			height: 2px;
 			background-color: rgba($main-color, 0.6);
 			box-shadow: 0 0 10px rgba(0, 0, 0, 0.288);
+		}
+	}
+}
+
+@media screen and (max-width: 360px) {
+	.char-info {
+		&__thumbnail {
+			width: 160px;
 		}
 	}
 }

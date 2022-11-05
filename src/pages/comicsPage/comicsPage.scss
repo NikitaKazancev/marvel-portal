@@ -4,10 +4,10 @@
 	&__list {
 		width: 100%;
 		display: grid;
-		grid-template-columns: repeat(4, 1fr);
+		grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
 		align-items: flex-start;
 		justify-items: center;
-		gap: 25px;
+		gap: 2.5vw;
 	}
 
 	&__more {
@@ -18,5 +18,13 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
+	}
+}
+
+@media screen and (max-width: 520px) {
+	.comics {
+		&__list {
+			grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
+		}
 	}
 }

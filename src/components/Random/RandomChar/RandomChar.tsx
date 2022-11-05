@@ -24,7 +24,7 @@ export const RandomChar: React.FC = () => {
 					className='random__char-thumbnail'
 				/>
 				<div className='random__char-info'>
-					<h3 className='random__char-title small-title'>{name}</h3>
+					<h3 className='random__char-title title'>{name}</h3>
 					<div className='random__char-descr descr'>{descr}</div>
 					<div className='random__char-src'>
 						<a className='btn btn_main' href={homepage}>

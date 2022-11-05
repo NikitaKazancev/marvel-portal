@@ -89,8 +89,12 @@
 	}
 }
 
-.small-title {
+.title {
 	font-size: $index;
+}
+
+.small-title {
+	font-size: calc($index * 0.75);
 }
 
 .descr {
@@ -98,8 +102,12 @@
 }
 
 @media screen and (max-width: 1350px) {
-	.small-title {
+	.title {
 		font-size: calc($index * 1.15);
+	}
+
+	.small-title {
+		font-size: $index;
 	}
 
 	.descr {
@@ -114,8 +122,12 @@
 }
 
 @media screen and (max-width: 1000px) {
-	.small-title {
+	.title {
 		font-size: 18px;
+	}
+
+	.small-title {
+		font-size: 16px;
 	}
 
 	.descr {

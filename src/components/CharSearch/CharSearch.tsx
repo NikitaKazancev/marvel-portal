@@ -48,7 +48,7 @@ export const CharSearch: React.FC = () => {
 					return (
 						<Form className='char-search__form' onSubmit={handleSubmit}>
 							<label
-								className='char-search__text small-title'
+								className='char-search__text title'
 								htmlFor='char-search__name-id'
 							>
 								Or find a character by name:

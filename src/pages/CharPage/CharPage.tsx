@@ -32,8 +32,8 @@ export const CharPage: React.FC = () => {
 				<div className='char-page'>
 					<img src={thumbnail} alt={name} className='block' />
 					<div className='char-page__wrapper'>
-						<h2 className='char-page__title'>{name}</h2>
-						<div className='char-page__descr'>{description}</div>
+						<h2 className='char-page__title title'>{name}</h2>
+						<div className='char-page__descr descr'>{description}</div>
 					</div>
 				</div>
 			</>

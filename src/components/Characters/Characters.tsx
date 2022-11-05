@@ -1,6 +1,6 @@
 import './characters.scss';
 
-import { useEffect } from 'react';
+import { MouseEventHandler, useEffect } from 'react';
 import { Character } from './Character/Character';
 import { useGetRandomsQuery } from '../../api/heroesApi';
 import { getCharacters } from '../../api/MarvelService';
@@ -47,8 +47,6 @@ export const Characters: React.FC = () => {
 	};
 
 	const onSelectedRef = (i: number): void => {
-		console.log(i);
-
 		itemsRefs.forEach(elem => elem.classList.remove('character_selected'));
 		itemsRefs[i].classList.add('character_selected');
 		itemsRefs[i].focus();
@@ -58,9 +56,24 @@ export const Characters: React.FC = () => {
 		dispatch(changeSelectedChar(id));
 	};
 
+	const scrollToCharInfo = (e: any): void => {
+		const target = e.target as HTMLElement;
+
+		if (!target.matches('characters__list')) {
+			const charInfo = document.querySelector('.char-info');
+			if (charInfo) {
+				charInfo.scrollIntoView({ behavior: 'smooth' });
+			}
+		}
+	};
+
 	return (
 		<div className='characters'>
-			<TransitionGroup component={'ul'} className='characters__list'>
+			<TransitionGroup
+				component={'ul'}
+				className='characters__list'
+				onClick={scrollToCharInfo}
+			>
 				{charsList.map(({ id, name, thumbnail }, i) => (
 					<CSSTransition
 						key={id}

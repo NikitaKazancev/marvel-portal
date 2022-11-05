@@ -33,11 +33,15 @@ export const ComicPage: React.FC = () => {
 				<div className='comic-page'>
 					<img src={thumbnail} alt={name} className='block' />
 					<div className='comic-page__wrapper'>
-						<h2 className='comic-page__title'>{name}</h2>
-						<div className='comic-page__descr'>{description}</div>
-						<div className='comic-page__pages'>{pageCount} pages</div>
-						<div className='comic-page__lang'>Language: {language}</div>
-						<div className='comic-page__price'>{price}</div>
+						<h2 className='comic-page__title title'>{name}</h2>
+						<div className='comic-page__descr descr'>{description}</div>
+						<div className='comic-page__pages small-title'>
+							{pageCount} pages
+						</div>
+						<div className='comic-page__lang small-title'>
+							Language: {language}
+						</div>
+						<div className='comic-page__price title'>{price}</div>
 					</div>
 				</div>
 			</>

@@ -5,6 +5,10 @@
 	width: 100%;
 	background-color: $bg-color;
 
+	a {
+		text-decoration: none;
+	}
+
 	&__thumbnail {
 		width: 100%;
 		border-radius: 5px 5px 0 0;

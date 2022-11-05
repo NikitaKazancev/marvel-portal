@@ -16,10 +16,10 @@ export const Page404: React.FC = () => {
 					<i className='page404__icon far fa-question-circle fa-spin'></i>
 					<div className='page404__err'>4</div>
 				</div>
-				<div className='page404__msg'>
+				<div className='page404__msg title'>
 					Maybe this page moved? Got deleted? <br />
 					Never existed in the first place?
-					<p>
+					<p className='title'>
 						Let's go{' '}
 						<Link className='page404__link' to={'/'}>
 							home
