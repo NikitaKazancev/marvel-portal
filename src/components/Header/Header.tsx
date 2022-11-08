@@ -14,13 +14,17 @@ export const Header: React.FC = () => {
 				name: 'Comics',
 				to: '/comics',
 			},
+			{
+				name: 'Events',
+				to: '/events',
+			},
 		];
 	}, []);
 
 	return (
 		<header className='header'>
 			<Link to={'/'} className='header__title'>
-				<span>Marvel</span> information portal
+				<span>Marvel</span> random portal
 			</Link>
 			<nav>
 				<ul>

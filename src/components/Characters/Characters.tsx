@@ -74,19 +74,12 @@ export const Characters: React.FC = () => {
 				className='characters__list'
 				onClick={scrollToCharInfo}
 			>
-				{charsList.map(({ id, name, thumbnail }, i) => (
-					<CSSTransition
-						key={id}
-						timeout={20000}
-						classNames={'fade'}
-						mountOnEnter
-					>
+				{charsList.map((hero, i) => (
+					<CSSTransition key={hero.id} timeout={1000} classNames={'fade'}>
 						<Character
-							thumbnail={thumbnail}
-							name={name}
-							id={id}
+							{...hero}
 							onSelectedChar={(): void => {
-								onSelectedChar(id);
+								onSelectedChar(hero.id);
 								onSelectedRef(i);
 							}}
 							setRef={setRef}

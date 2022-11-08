@@ -1,15 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-
-export interface IComic {
-	id: string;
-	thumbnail: string;
-	name: string;
-	price: string;
-}
+import { IComicResDto } from '../api/dto/comic/IComicResDto';
 
 export interface IComicsState {
-	list: IComic[];
+	list: IComicResDto[];
 	loadByClick: boolean;
 }
 
@@ -22,7 +16,7 @@ const comicsSlice = createSlice({
 	name: 'comics',
 	initialState,
 	reducers: {
-		add: (state, action: PayloadAction<IComic[]>) => {
+		add: (state, action: PayloadAction<IComicResDto[]>) => {
 			state.list = state.list.concat(action.payload);
 		},
 

@@ -4,26 +4,45 @@ import { IHeroQueryDto } from './dto/hero/IHeroQueryDto';
 import type { IComicDto } from './dto/comic/IComicDto';
 import type { IComicResDto } from './dto/comic/IComicResDto';
 import { IComicQueryDto } from './dto/comic/IComicQueryDto';
+import { getArrWithIdByUrl, getIdByUrl } from '../general/functions';
+import { IEventDto } from './dto/event/IEventDto';
+import { IEventResDto } from './dto/event/IEventResDto';
+import { IEventQueryDto } from './dto/event/IEventQueryDto';
 
 //eslint-disable-next-line
 const MarvelService = () => {
+	const getEvent = (data: IEventQueryDto): IEventResDto => {
+		console.log(data);
+		return transformEventData(data.data.results[0]);
+	};
+
 	const getCharacter = (data: IHeroQueryDto): IHeroResDto =>
-		_transformCharacterData(data.data.results[0]);
+		transformCharacterData(data.data.results[0]);
 
 	const getCharacters = (data: IHeroQueryDto): IHeroResDto[] => {
 		const chars = data.data.results;
-		return chars.map(_transformCharacterData);
+		return chars.map(transformCharacterData);
 	};
 
 	const getComic = (data: IComicQueryDto): IComicResDto =>
-		_transformComicData(data.data.results[0]);
+		transformComicData(data.data.results[0]);
 
 	const getComics = (data: IComicQueryDto): IComicResDto[] => {
 		const comics = data.data.results;
-		return comics.map(_transformComicData);
+		return comics.map(transformComicData);
 	};
 
-	const _transformCharacterData = ({
+	const getEvents = (data: IEventQueryDto): IEventResDto[] => {
+		const events = data.data.results;
+		return events.map(transformEventData);
+	};
+
+	const changeDescr = (descr: string, name: string): string =>
+		descr.includes('</p>')
+			? descr.slice(16, -4)
+			: descr || `At the moment there's no description about ${name}`;
+
+	const transformCharacterData = ({
 		id,
 		name,
 		description,
@@ -31,13 +50,17 @@ const MarvelService = () => {
 		urls,
 		comics,
 	}: IHeroDto): IHeroResDto => {
-		description = description.includes('</p>')
-			? description.slice(16, -4)
-			: description || `At the moment there's no description about ${name}`;
+		description = changeDescr(description, name);
 
-		let comicsRes = comics.items;
+		let comicsRes: {
+			id: string;
+			name: string;
+		}[] = getArrWithIdByUrl(comics.items, 'resourceURI') as unknown as {
+			id: string;
+			name: string;
+		}[];
 		if (comicsRes.length > 10) {
-			comicsRes = comicsRes.slice(0, 9);
+			comicsRes = comicsRes.slice(0, 10);
 		}
 
 		return {
@@ -51,7 +74,7 @@ const MarvelService = () => {
 		};
 	};
 
-	const _transformComicData = ({
+	const transformComicData = ({
 		description,
 		id,
 		pageCount,
@@ -62,10 +85,9 @@ const MarvelService = () => {
 	}: IComicDto): IComicResDto => {
 		if (!description) {
 			description = '';
+		} else {
+			description = changeDescr(description, title);
 		}
-		description = description.includes('</p>')
-			? description.slice(16, -4)
-			: description || `At the moment there's no description about ${title}`;
 
 		let language: string;
 		if (!textObjects.length || !textObjects[0].language) {
@@ -95,8 +117,98 @@ const MarvelService = () => {
 		};
 	};
 
-	return { getCharacter, getCharacters, getComic, getComics };
+	const transformEventData = ({
+		description,
+		end,
+		id,
+		start,
+		thumbnail: { extension, path },
+		title,
+		urls,
+		previous,
+		next,
+		comics,
+	}: IEventDto): IEventResDto => {
+		description = changeDescr(description, title);
+
+		if (previous) {
+			if (!previous.name) {
+				previous.name = 'Previous';
+			}
+
+			if (!previous.resourceURI) {
+				previous = undefined;
+			}
+		}
+
+		if (next) {
+			if (!next.name) {
+				next.name = 'Next';
+			}
+
+			if (!next.resourceURI) {
+				next = undefined;
+			}
+		}
+
+		let comicsRes:
+			| {
+					id: string;
+					name: string;
+			  }[]
+			| undefined = undefined;
+		if (comics) {
+			comicsRes = getArrWithIdByUrl(
+				comics.items,
+				'resourceURI'
+			) as unknown as {
+				id: string;
+				name: string;
+			}[];
+			if (comicsRes.length > 10) {
+				comicsRes = comicsRes.slice(0, 10);
+			}
+		}
+
+		return {
+			description,
+			end: end?.slice(0, 10),
+			id,
+			start: start?.slice(0, 10),
+			thumbnail: `${path}.${extension}`,
+			title,
+			detailUrl: urls[0]?.url,
+			previous: previous
+				? {
+						id: getIdByUrl(previous?.resourceURI),
+						name: previous?.name,
+				  }
+				: undefined,
+			next: next
+				? {
+						id: getIdByUrl(next?.resourceURI),
+						name: next?.name,
+				  }
+				: undefined,
+			comics: comics ? comicsRes : undefined,
+		};
+	};
+
+	return {
+		getCharacter,
+		getCharacters,
+		getComic,
+		getComics,
+		getEvents,
+		getEvent,
+	};
 };
 
-export const { getCharacter, getCharacters, getComic, getComics } =
-	MarvelService();
+export const {
+	getCharacter,
+	getCharacters,
+	getComic,
+	getComics,
+	getEvents,
+	getEvent,
+} = MarvelService();

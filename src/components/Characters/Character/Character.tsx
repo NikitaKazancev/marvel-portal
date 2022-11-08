@@ -1,13 +1,12 @@
+import { IHeroResDto } from '../../../api/dto/hero/IHeroResDto';
 import './character.scss';
-
-import type { ICharacter } from '../../../state/heroesSlice';
 
 interface ICharFunctions {
 	onSelectedChar: (id: string) => void;
 	setRef: (elem: HTMLLIElement) => void;
 }
 
-export const Character: React.FC<ICharacter & ICharFunctions> = ({
+export const Character: React.FC<IHeroResDto & ICharFunctions> = ({
 	thumbnail,
 	name,
 	id,

@@ -1,14 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-
-export interface ICharacter {
-	thumbnail: string;
-	name: string;
-	id: string;
-}
+import { IHeroResDto } from '../api/dto/hero/IHeroResDto';
 
 export interface IHeroesState {
-	list: ICharacter[];
+	list: IHeroResDto[];
 	selectedChar: string;
 	searchName: string;
 	loadByClick: boolean;
@@ -25,7 +20,7 @@ const heroesSlice = createSlice({
 	name: 'heroes',
 	initialState,
 	reducers: {
-		add: (state, action: PayloadAction<ICharacter[]>) => {
+		add: (state, action: PayloadAction<IHeroResDto[]>) => {
 			state.list = state.list.concat(action.payload);
 		},
 

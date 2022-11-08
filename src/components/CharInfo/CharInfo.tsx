@@ -8,6 +8,7 @@ import { getCharacter } from '../../api/MarvelService';
 import { useSelector } from 'react-redux';
 import { IState } from '../../state/store';
 import { transformString } from '../../general/functions';
+import { AnchorBtn } from '../AnchorBtn/AnchorBtn';
 
 export const CharInfo: React.FC = () => {
 	const selectedChar = useSelector(
@@ -40,12 +41,12 @@ export const CharInfo: React.FC = () => {
 					<div className='flex'>
 						<h3 className='char-info__title title'>{name}</h3>
 						<div className='char-info__src'>
-							<a className='btn btn_main' href={homepage}>
+							<AnchorBtn type='main' href={homepage}>
 								homepage
-							</a>
-							<a className='btn btn_secondary' href={wiki}>
+							</AnchorBtn>
+							<AnchorBtn type='secondary' href={wiki}>
 								wiki
-							</a>
+							</AnchorBtn>
 						</div>
 					</div>
 				</div>
@@ -54,8 +55,8 @@ export const CharInfo: React.FC = () => {
 					<h4 className='char-info__comics-title title'>
 						{comics.length ? 'Comics:' : 'No info about comics'}
 					</h4>
-					{comics.map(({ name }, i) => (
-						<CharInfoComic name={name} key={i} />
+					{comics.map(({ name, id }) => (
+						<CharInfoComic id={id} name={name} key={id} />
 					))}
 				</div>
 			</>

@@ -48,19 +48,13 @@ export const ComicsPage: React.FC = () => {
 			<Banner />
 			<div className='comics'>
 				<TransitionGroup component={'ul'} className='comics__list'>
-					{comicsList.map(({ id, name, thumbnail, price }) => (
+					{comicsList.map(comic => (
 						<CSSTransition
-							key={id}
-							timeout={20000}
+							key={comic.id}
+							timeout={1000}
 							classNames={'fade'}
-							mountOnEnter
 						>
-							<Comic
-								thumbnail={thumbnail}
-								name={name}
-								id={id}
-								price={price}
-							/>
+							<Comic {...comic} />
 						</CSSTransition>
 					))}
 				</TransitionGroup>

@@ -1,0 +1,6 @@
+.char-info-comic {
+	transition: color 0.15s;
+	&:hover {
+		color: rgb(132, 132, 132);
+	}
+}

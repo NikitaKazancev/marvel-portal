@@ -5,5 +5,5 @@ export interface IHeroResDto {
 	thumbnail: string;
 	homepage: string;
 	wiki: string;
-	comics: { resourceURI: string; name: string }[];
+	comics: { id: string; name: string }[];
 }

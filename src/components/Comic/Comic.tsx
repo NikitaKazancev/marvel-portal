@@ -1,9 +1,14 @@
 import './comic.scss';
 
-import { IComic } from '../../state/comicsSlice';
 import { Link } from 'react-router-dom';
+import { IComicResDto } from '../../api/dto/comic/IComicResDto';
 
-export const Comic: React.FC<IComic> = ({ thumbnail, id, name, price }) => {
+export const Comic: React.FC<IComicResDto> = ({
+	thumbnail,
+	id,
+	name,
+	price,
+}) => {
 	return (
 		<Link to={`/comics/${id}`} className='comic'>
 			<img src={thumbnail} alt={name} className='comic__thumbnail block' />

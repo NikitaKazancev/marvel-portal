@@ -14,16 +14,10 @@ export const CharSearch: React.FC = () => {
 		(state: IState) => state.heroesState.searchName
 	);
 
-	const { data, isFetching, isLoading, isError, refetch } =
-		useGetByNameQuery(searchName);
+	const { data, isFetching, refetch } = useGetByNameQuery(searchName);
 
 	const onSubmit = (name: string): void => {
-		// setSearchName(name);
-
-		console.log(1);
-
 		dispatch(setSearchName(name));
-		console.log(searchName);
 
 		refetch();
 	};

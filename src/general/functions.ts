@@ -25,3 +25,27 @@ export const transformString = (str: string, maxLen = 200): string => {
 
 	return str;
 };
+
+export const getIdByUrl = (url: string): string => {
+	const matches = url.match('[0-9]+$');
+	if (matches) {
+		return matches[0];
+	}
+	return '';
+};
+
+export const getArrWithIdByUrl = <T extends Record<string, string>>(
+	objects: T[],
+	fieldName: string
+): T[] & { id: string }[] => {
+	const res: T[] & { id: string }[] = [];
+	objects.forEach(object => {
+		if (fieldName in object) {
+			const matches = object[fieldName].match('[0-9]+$');
+			if (matches) {
+				res.push({ ...object, id: matches[0] });
+			}
+		}
+	});
+	return res;
+};
