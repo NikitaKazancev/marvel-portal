@@ -1,0 +1,178 @@
+@import '../../sass/vars.scss';
+
+.about {
+	&__banner {
+		position: relative;
+		left: -8vw;
+		width: 100vw;
+
+		&-title {
+			width: 100%;
+			text-transform: uppercase;
+			text-align: center;
+			position: absolute;
+			font-size: calc($index * 2);
+			color: #fff;
+			top: 50%;
+			transform: translate3d(0, -50%, 0);
+			z-index: 1;
+		}
+
+		img {
+			width: 100%;
+		}
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-color: rgba($color: #000000, $alpha: 0.5);
+		}
+
+		&::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			height: 50px;
+			width: 100%;
+			background: linear-gradient(
+				to right bottom,
+				transparent 0%,
+				transparent 47%,
+				#fff 49%,
+				#fff 100%
+			);
+		}
+	}
+
+	&__wrapper {
+		margin: 40px auto 0 auto;
+		width: 70%;
+		display: grid;
+		gap: 30px;
+
+		.descr {
+			margin-top: 10px;
+		}
+	}
+
+	&__title {
+		letter-spacing: 1px;
+		position: relative;
+		text-transform: uppercase;
+
+		&:before,
+		&::after {
+			background-color: $main-color;
+			content: '';
+			display: block;
+			height: 2px;
+			position: absolute;
+			-webkit-transform: rotate(-45deg) skewX(45deg);
+			transform: rotate(-45deg) skewX(45deg);
+			width: 20px;
+		}
+		&:before {
+			left: 53px;
+			top: -8px;
+			-webkit-transform-origin: left bottom;
+			transform-origin: left bottom;
+		}
+		&::after {
+			left: -6px;
+			top: calc(100% + 3px);
+			-webkit-transform-origin: right top;
+			transform-origin: right top;
+		}
+	}
+
+	&__elem {
+		margin-top: 10px;
+
+		strong {
+			color: rgba($color: #000000, $alpha: 0.78);
+		}
+
+		.descr {
+			line-height: 1.2em;
+			margin-top: 20px;
+		}
+
+		a {
+			transition: color 0.3s;
+			color: scale-color($color: $main-color, $lightness: 10%);
+			border-bottom: $main-color 1px solid;
+
+			&:hover {
+				color: rgba(
+					scale-color($color: $main-color, $lightness: -20%),
+					0.75
+				);
+				border-bottom: none;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 1500px) {
+	.about {
+		&__banner {
+			left: -5vw;
+		}
+	}
+}
+
+@media screen and (max-width: 1000px) {
+	.about {
+		img {
+			width: auto;
+			height: 60vh;
+		}
+	}
+}
+
+@media screen and (max-width: 750px) {
+	.about {
+		&__banner {
+			&-title {
+				padding: 0 30px;
+				font-size: 30px;
+			}
+		}
+
+		&__wrapper {
+			margin-top: 25px;
+			width: 80%;
+			gap: 20px;
+
+			.title {
+				font-size: 24px;
+			}
+
+			.small-title {
+				font-size: 21px;
+			}
+
+			.descr {
+				font-size: 18px;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.about {
+		&__banner {
+			left: -3vw;
+		}
+
+		&__wrapper {
+			width: 95%;
+			margin-top: 20px;
+		}
+	}
+}

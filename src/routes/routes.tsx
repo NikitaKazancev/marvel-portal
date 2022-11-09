@@ -1,5 +1,6 @@
 import { createRef } from 'react';
 import { Page404 } from '../pages/404/Page404';
+import { AboutPage } from '../pages/AboutPage/AboutPage';
 import { CharPage } from '../pages/CharPage/CharPage';
 import { ComicPage } from '../pages/ComicPage/ComicPage';
 import { ComicsPage } from '../pages/ComicsPage/ComicsPage';
@@ -37,6 +38,12 @@ export const routes = [
 		path: '/events/:id',
 		name: 'Event',
 		element: <SinglePage pageType='event' />,
+		nodeRef: createRef(),
+	},
+	{
+		path: '/about',
+		name: 'About',
+		element: <AboutPage />,
 		nodeRef: createRef(),
 	},
 	{

@@ -1,5 +1,6 @@
 .page {
 	&_main {
+		margin-top: 110px;
 		display: grid;
 		grid-template-columns: 5fr 3fr;
 		gap: 25px;
@@ -9,5 +10,6 @@
 @media screen and (max-width: 750px) {
 	.page_main {
 		grid-template-columns: 1fr;
+		margin-top: 85px;
 	}
 }

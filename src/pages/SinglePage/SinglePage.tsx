@@ -1,3 +1,5 @@
+import './singlePage.scss';
+
 import { useParams } from 'react-router-dom';
 import { Banner } from '../../components/Banner/Banner';
 import Spinner from '../../components/Spinner/Spinner';
@@ -25,9 +27,9 @@ export const SinglePage: React.FC<{ pageType: Type }> = ({ pageType }) => {
 	}
 
 	return (
-		<>
+		<div className='page_mt'>
 			<Banner />
 			{content}
-		</>
+		</div>
 	);
 };

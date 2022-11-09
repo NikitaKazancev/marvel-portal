@@ -39,7 +39,7 @@ export const EventsPage: React.FC = () => {
 	};
 
 	return (
-		<>
+		<div className='page_mt'>
 			<Helmet>
 				<title>Events</title>
 				<meta name='description' content='Events page' />
@@ -65,6 +65,6 @@ export const EventsPage: React.FC = () => {
 					)}
 				</div>
 			</div>
-		</>
+		</div>
 	);
 };

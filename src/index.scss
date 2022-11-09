@@ -28,3 +28,16 @@ html,
 body {
 	overflow-x: hidden;
 }
+
+html.no-scroll {
+	overflow: hidden;
+}
+
+p {
+	margin: 0;
+}
+
+a {
+	text-decoration: none;
+	color: #000;
+}

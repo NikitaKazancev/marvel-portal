@@ -1,0 +1,98 @@
+@import '../../sass/vars.scss';
+
+.single-page {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	position: relative;
+
+	img {
+		border-radius: 10px;
+		margin-right: 25px;
+	}
+
+	.wrapper {
+		width: 70%;
+		display: inline-flex;
+		flex-direction: column;
+		gap: 20px;
+		align-items: flex-start;
+	}
+
+	.title {
+		font-weight: bold;
+	}
+
+	.descr {
+		line-height: 1.5em;
+		width: 100%;
+	}
+
+	.src {
+		// margin-top: 20px;
+		.btn:nth-child(1) {
+			margin-right: 10px;
+		}
+	}
+}
+
+@media screen and (max-width: 1000px) {
+	.single-page {
+		.wrapper {
+			width: 85%;
+		}
+	}
+}
+
+@media screen and (max-width: 750px) {
+	.single-page {
+		grid-template-columns: 1fr;
+		justify-items: center;
+
+		img {
+			margin-right: 0;
+			margin-top: 5px;
+		}
+
+		.wrapper {
+			width: 90%;
+			align-items: center;
+			margin-top: 5px;
+			gap: 10px;
+			text-align: center;
+
+			.descr {
+				margin-top: 10px;
+			}
+		}
+
+		.comics {
+			text-align: center;
+			padding-top: 20px;
+			position: relative;
+
+			&::before {
+				content: '';
+				position: absolute;
+				top: 8px;
+				left: -5vw;
+				height: 2px;
+				width: 100vw;
+				background-color: $main-color;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.single-page {
+		.wrapper {
+			width: 95%;
+		}
+
+		.comics {
+			&::before {
+				left: -3vw;
+			}
+		}
+	}
+}

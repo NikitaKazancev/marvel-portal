@@ -104,6 +104,8 @@ const MarvelService = () => {
 
 		if (pageCount == '0') {
 			pageCount = 'Pages are not available';
+		} else {
+			pageCount += ' pages';
 		}
 
 		return {
@@ -177,7 +179,7 @@ const MarvelService = () => {
 			start: start?.slice(0, 10),
 			thumbnail: `${path}.${extension}`,
 			title,
-			detailUrl: urls[0]?.url,
+			homepage: urls[0]?.url,
 			previous: previous
 				? {
 						id: getIdByUrl(previous?.resourceURI),

@@ -1,9 +1,11 @@
 import './app.scss';
 
+import { useRef } from 'react';
 import { Header } from '../Header/Header';
 import { useLocation, useOutlet } from 'react-router-dom';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
 import { routes } from '../../routes/routes';
+import { Footer } from '../Footer/Footer';
 
 export function App(): JSX.Element {
 	const location = useLocation();
@@ -19,7 +21,7 @@ export function App(): JSX.Element {
 
 	return (
 		<div className='app'>
-			<Header></Header>
+			<Header />
 
 			<SwitchTransition>
 				<CSSTransition
@@ -40,6 +42,8 @@ export function App(): JSX.Element {
 					)}
 				</CSSTransition>
 			</SwitchTransition>
+
+			<Footer />
 		</div>
 	);
 }

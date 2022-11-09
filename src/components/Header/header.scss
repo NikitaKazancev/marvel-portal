@@ -1,23 +1,32 @@
 @import '../../sass/vars.scss';
 
+$header-color: rgb(247, 104, 104);
+
 .header {
+	position: fixed;
+	z-index: 100000;
+	top: 0;
+	left: 0;
+	height: 80px;
+	background-color: $bg-color;
+	width: 100%;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-
 	font-weight: 700;
+	transition: top 0.5s ease;
 
 	&__title {
 		font-size: calc($index * 1.25);
 		text-decoration: none;
-		color: #000;
+		color: #fff;
 
 		span {
-			color: $main-color;
+			color: $header-color;
 		}
 	}
 
-	nav > ul {
+	&__nav > ul {
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -27,19 +36,66 @@
 
 		a {
 			font-size: $index;
-			color: #000;
+			color: #fff;
 			text-decoration: none;
 
 			&:hover {
 				cursor: pointer;
 				transition: 0.3s all;
-				color: $main-color;
+				color: $header-color;
 			}
 
 			&.with-slash:after {
 				content: '/';
-				color: #000;
+				color: #fff;
 				margin: 0 5px;
+			}
+		}
+	}
+
+	&_hide {
+		top: -80px;
+	}
+
+	&__hamburger {
+		z-index: 10;
+		display: none;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		gap: 13%;
+		width: 3.5em;
+		height: 3.5em;
+		transition: all 0.3s;
+
+		div {
+			z-index: 9;
+			width: 30px;
+			height: 4px;
+			background: #d2d2d2;
+			border-radius: 100px;
+			transition: all 0.3s;
+		}
+
+		&_active {
+			div {
+				background: #fff;
+
+				&.top {
+					transform: translateY(290%) rotate(45deg);
+					width: 40px;
+				}
+
+				&.mid {
+					transform: translateX(-20px);
+					opacity: 0;
+				}
+
+				&.bot {
+					transform: translateY(-270%) rotate(-45deg);
+					width: 40px;
+					box-shadow: 0 0 10px #495057;
+				}
 			}
 		}
 	}
@@ -52,7 +108,7 @@
 		&__title {
 			font-size: calc($index * 1.5);
 		}
-		nav > ul {
+		&__nav > ul {
 			a {
 				font-size: calc($index * 1.25);
 			}
@@ -60,21 +116,67 @@
 	}
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 750px) {
 	.header {
-		flex-direction: column;
+		height: 60px;
 
-		&__title {
-			font-size: calc($index * 2.25);
+		&_hide {
+			top: -60px;
 		}
 
-		nav {
-			margin-top: 20px;
+		&__hamburger {
+			display: flex;
+		}
 
-			& > ul {
+		&__nav {
+			position: absolute;
+			top: 0;
+			right: -40vw;
+			height: 101vh;
+			background-color: rgb(148, 32, 32);
+			opacity: 0.97;
+			transition: right 0.3s ease-out;
+			padding: 60px 20px;
+
+			> ul {
+				margin: 0 auto;
+				width: 100%;
+				display: inline-flex;
+				flex-direction: column;
+				align-items: flex-end;
+				gap: 10px;
+
 				a {
-					font-size: calc($index * 1.75);
+					font-size: 30px;
+					letter-spacing: 2px;
+					color: #fff;
+
+					&.with-slash:after {
+						content: none;
+					}
 				}
+			}
+
+			&_show {
+				right: -2px;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.header {
+		&__nav {
+			right: -55vw;
+
+			> ul {
+				a {
+					font-size: 24px;
+				}
+			}
+
+			&_show {
+				right: -2px;
 			}
 		}
 	}

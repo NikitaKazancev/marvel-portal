@@ -10,7 +10,7 @@ export const MainPage: React.FC = () => {
 	return (
 		<>
 			<Helmet>
-				<title>Marvel Informational Portal</title>
+				<title>Marvel Random Portal</title>
 				<meta name='description' content='Main page' />
 			</Helmet>
 			<div className='page_main'>

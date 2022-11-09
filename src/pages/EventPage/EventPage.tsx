@@ -4,15 +4,15 @@ import { getEvent } from '../../api/MarvelService';
 import { Helmet } from 'react-helmet';
 import { AnchorBtn } from '../../components/AnchorBtn/AnchorBtn';
 import { Link } from 'react-router-dom';
-import { getIdByUrl } from '../../general/functions';
-import { CharInfoComic } from '../../components/CharInfo/CharInfoComic/CharInfoComic';
+import { getIdByUrl, transformString } from '../../general/functions';
+import { ComicsList } from '../../components/ComicsList/ComicsList';
 
 export const EventPage: React.FC<{ data: any }> = ({ data }) => {
 	const {
 		description,
 		thumbnail,
 		title,
-		detailUrl,
+		homepage,
 		end,
 		start,
 		previous,
@@ -25,11 +25,31 @@ export const EventPage: React.FC<{ data: any }> = ({ data }) => {
 				<title>{title}</title>
 				<meta name='description' content={`Event ${title}`} />
 			</Helmet>
-			<div className='event-page'>
+			<div className='event-page single-page'>
+				{previous || next ? (
+					<div className='event-page__routes'>
+						{previous ? (
+							<Link
+								to={`/events/${getIdByUrl(previous.id)}`}
+								className='event-page__routes-prev btn btn_main'
+							>
+								{transformString(previous.name, 15)}
+							</Link>
+						) : null}
+						{next ? (
+							<Link
+								to={`/events/${getIdByUrl(next.id)}`}
+								className='event-page__routes-next btn btn_main'
+							>
+								{transformString(next.name, 15)}
+							</Link>
+						) : null}
+					</div>
+				) : null}
 				<img src={thumbnail} alt={title} className='block' />
-				<div className='event-page__wrapper'>
-					<h2 className='event-page__title title'>{title}</h2>
-					<div className='event-page__descr descr'>{description}</div>
+				<div className='wrapper'>
+					<h2 className='title'>{title}</h2>
+					<div className='descr'>{description}</div>
 					{start || end ? (
 						<div className='event-page__time small-title'>
 							{start ? (
@@ -44,17 +64,14 @@ export const EventPage: React.FC<{ data: any }> = ({ data }) => {
 							) : null}
 						</div>
 					) : null}
-					{detailUrl ? (
-						<AnchorBtn
-							classNames='event-page__details'
-							href={detailUrl}
-							type='main'
-						>
-							details
+					{homepage ? (
+						<AnchorBtn classNames='details' href={homepage} type='main'>
+							homepage
 						</AnchorBtn>
 					) : null}
 				</div>
-				{comics ? (
+				<ComicsList comics={comics} classNames='comics' />
+				{/* {comics && comics.length ? (
 					<div className='event-page__comics'>
 						<h4 className='event-page__comics-title title'>
 							{comics.length ? 'Comics:' : 'No info about comics'}
@@ -63,27 +80,7 @@ export const EventPage: React.FC<{ data: any }> = ({ data }) => {
 							<CharInfoComic id={id} name={name} key={id} />
 						))}
 					</div>
-				) : null}
-				{previous || next ? (
-					<div className='event-page__routes'>
-						{previous ? (
-							<Link
-								to={`/events/${getIdByUrl(previous.id)}`}
-								className='event-page__routes-prev btn btn_main'
-							>
-								{previous.name}
-							</Link>
-						) : null}
-						{next ? (
-							<Link
-								to={`/events/${getIdByUrl(next.id)}`}
-								className='event-page__routes-next btn btn_main'
-							>
-								{next.name}
-							</Link>
-						) : null}
-					</div>
-				) : null}
+				) : null} */}
 			</div>
 		</>
 	);

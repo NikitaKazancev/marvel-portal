@@ -40,7 +40,7 @@ export const ComicsPage: React.FC = () => {
 	};
 
 	return (
-		<>
+		<div className='page_mt'>
 			<Helmet>
 				<title>Comics</title>
 				<meta name='description' content='Comics page' />
@@ -72,6 +72,6 @@ export const ComicsPage: React.FC = () => {
 					)}
 				</div>
 			</div>
-		</>
+		</div>
 	);
 };

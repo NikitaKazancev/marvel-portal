@@ -3,7 +3,7 @@ export interface IEventResDto {
 	title: string;
 	description: string;
 	thumbnail: string;
-	detailUrl?: string;
+	homepage?: string;
 	start?: string;
 	end?: string;
 	previous?: {

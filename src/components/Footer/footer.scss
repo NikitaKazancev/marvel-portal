@@ -1,0 +1,92 @@
+@import '../../sass/vars.scss';
+
+.footer {
+	padding: 30px 0;
+	width: 100vw;
+	background-color: $bg-color;
+	color: #fff;
+	align-self: flex-end;
+
+	&__container {
+		margin: 0 auto;
+		width: 600px;
+		display: grid;
+		grid-template-columns: auto auto 1fr;
+		align-items: center;
+	}
+
+	&__logo {
+		width: 50px;
+		margin-right: 30px;
+	}
+
+	&__links {
+		a {
+			text-decoration: none;
+			color: #fff;
+			transition: color 0.15s;
+
+			&:hover {
+				color: rgba(255, 255, 255, 0.584);
+			}
+		}
+	}
+
+	&__title {
+		text-transform: uppercase;
+		font-weight: bold;
+		letter-spacing: 2px;
+	}
+
+	&__socials {
+		justify-self: flex-end;
+		display: flex;
+		flex-direction: column;
+
+		&-wrapper {
+			margin-top: 20px;
+			display: inline-flex;
+			gap: 20px;
+		}
+	}
+
+	&__social {
+		i {
+			color: rgba(255, 255, 255, 0.584);
+			transition: color 0.15s;
+			font-size: 22px;
+
+			&:hover {
+				color: #fff;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 700px) {
+	.footer {
+		padding: 20px 10px;
+
+		&__container {
+			width: 400px;
+		}
+	}
+}
+
+@media screen and (max-width: 450px) {
+	.footer {
+		&__container {
+			width: 300px;
+		}
+
+		&__logo {
+			margin-right: 10px;
+		}
+
+		&__socials {
+			&-wrapper {
+				margin-top: 10px;
+			}
+		}
+	}
+}
