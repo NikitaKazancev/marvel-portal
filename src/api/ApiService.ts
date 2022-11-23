@@ -12,8 +12,6 @@ const ApiService = () => {
 		event: 74,
 		comic: 53393,
 	};
-	// const _charsAmount = 1561;
-	// const _eventsAmount = 74;
 
 	const getHash = (timeStamp: number): string => {
 		return md5(timeStamp + _privateKey + _apiKey);
