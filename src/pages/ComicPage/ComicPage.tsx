@@ -4,10 +4,9 @@ import { getComic } from '../../api/MarvelService';
 import { Helmet } from 'react-helmet';
 
 export const ComicPage: React.FC<{ data: any }> = ({ data }) => {
-	console.log(data);
-
 	const { description, name, thumbnail, language, pageCount, price } =
 		getComic(data);
+
 	return (
 		<>
 			<Helmet>

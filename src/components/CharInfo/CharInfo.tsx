@@ -8,7 +8,6 @@ import { useSelector } from 'react-redux';
 import { IState } from '../../state/store';
 import { transformString } from '../../general/functions';
 import { AnchorBtn } from '../AnchorBtn/AnchorBtn';
-import { SingleComic } from '../ComicsList/SingleComic/SingleComic';
 import { ComicsList } from '../ComicsList/ComicsList';
 
 export const CharInfo: React.FC = () => {
@@ -53,14 +52,6 @@ export const CharInfo: React.FC = () => {
 				</div>
 				<div className='char-info__descr descr'>{descr}</div>
 				<ComicsList comics={comics} classNames='mt-1' />
-				{/* <div className='char-info__comics'>
-					<h4 className='char-info__comics-title title'>
-						{comics.length ? 'Comics:' : 'No info about comics'}
-					</h4>
-					{comics.map(({ name, id }) => (
-						<SingleComic id={id} name={name} key={id} />
-					))}
-				</div> */}
 			</>
 		);
 	}

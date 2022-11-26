@@ -1,11 +1,6 @@
 import './charPage.scss';
 
-import { useParams } from 'react-router-dom';
-import { useGetByIdQuery } from '../../api/heroesApi';
 import { getCharacter } from '../../api/MarvelService';
-import { Banner } from '../../components/Banner/Banner';
-import Spinner from '../../components/Spinner/Spinner';
-import { Page404 } from '../404/Page404';
 import { Helmet } from 'react-helmet';
 import { AnchorBtn } from '../../components/AnchorBtn/AnchorBtn';
 import { ComicsList } from '../../components/ComicsList/ComicsList';
@@ -35,16 +30,6 @@ export const CharPage: React.FC<{ data: any }> = ({ data }) => {
 				</div>
 
 				<ComicsList comics={comics} classNames='comics' />
-				{/* {comics && comics.length ? (
-					<div className='event-page__comics'>
-						<h4 className='event-page__comics-title title'>
-							{comics.length ? 'Comics:' : 'No info about comics'}
-						</h4>
-						{comics.map(({ name, id }) => (
-							<CharInfoComic id={id} name={name} key={id} />
-						))}
-					</div>
-				) : null} */}
 			</div>
 		</>
 	);

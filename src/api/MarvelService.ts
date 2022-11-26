@@ -12,7 +12,6 @@ import { IEventQueryDto } from './dto/event/IEventQueryDto';
 //eslint-disable-next-line
 const MarvelService = () => {
 	const getEvent = (data: IEventQueryDto): IEventResDto => {
-		console.log(data);
 		return transformEventData(data.data.results[0]);
 	};
 
