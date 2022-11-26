@@ -46,24 +46,27 @@ export const Characters: React.FC = () => {
 		refetch();
 	};
 
-	const onSelectedRef = (i: number): void => {
-		itemsRefs.forEach(elem => elem.classList.remove('character_selected'));
-		itemsRefs[i].classList.add('character_selected');
-		itemsRefs[i].focus();
+	const scrollToCharInfo = (): void => {
+		const charInfo = document.querySelector('.char-info');
+		if (charInfo) {
+			charInfo.scrollIntoView({ behavior: 'smooth' });
+		}
 	};
 
-	const onSelectedChar = (id: string): void => {
-		dispatch(changeSelectedChar(id));
-	};
+	const onCharsClick = (e: any): void => {
+		let target = e.target as HTMLElement;
 
-	const scrollToCharInfo = (e: any): void => {
-		const target = e.target as HTMLElement;
+		if (!target.matches('.characters__list')) {
+			scrollToCharInfo();
 
-		if (!target.matches('characters__list')) {
-			const charInfo = document.querySelector('.char-info');
-			if (charInfo) {
-				charInfo.scrollIntoView({ behavior: 'smooth' });
+			if (!target.matches('.character') && target.parentElement) {
+				target = target.parentElement;
 			}
+
+			itemsRefs.forEach(elem => elem.classList.remove('character_selected'));
+			target.classList.add('character_selected');
+
+			dispatch(changeSelectedChar(target.getAttribute('data-id') ?? ''));
 		}
 	};
 
@@ -72,18 +75,11 @@ export const Characters: React.FC = () => {
 			<TransitionGroup
 				component={'ul'}
 				className='characters__list'
-				onClick={scrollToCharInfo}
+				onClick={onCharsClick}
 			>
-				{charsList.map((hero, i) => (
+				{charsList.map(hero => (
 					<CSSTransition key={hero.id} timeout={1000} classNames={'fade'}>
-						<Character
-							{...hero}
-							onSelectedChar={(): void => {
-								onSelectedChar(hero.id);
-								onSelectedRef(i);
-							}}
-							setRef={setRef}
-						/>
+						<Character {...hero} setRef={setRef} />
 					</CSSTransition>
 				))}
 			</TransitionGroup>
