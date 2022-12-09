@@ -5,7 +5,7 @@ import { IHeroQueryDto } from './dto/hero/IHeroQueryDto';
 const heroesApi = createApi({
 	reducerPath: 'heroes',
 	baseQuery: fetchBaseQuery({
-		baseUrl: 'https://gateway.marvel.com:443/v1/public/',
+		baseUrl: 'https://gateway.marvel.com/v1/public/',
 	}),
 	endpoints: builder => ({
 		getRandomChar: builder.query({

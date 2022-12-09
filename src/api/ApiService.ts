@@ -23,6 +23,7 @@ const ApiService = () => {
 		const randomNum = random({
 			end: amounts[type] - limit,
 		});
+		console.log(`${type}s?limit=${limit}&offset=${randomNum}${params}`);
 		return `${type}s?limit=${limit}&offset=${randomNum}${params}`;
 	};
 
